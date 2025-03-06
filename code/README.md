@@ -14,12 +14,12 @@ You need a Google account to be able to run the code notebooks. Once you have a 
 
 #### Python
 
-* Web-scraping Practical 1 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/blob/main/code/day-1/sgsss-web-scraping-practical-1-2025-03-07-Python.ipynb)
-* Web-scraping Practical 2 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/blob/main/code/day-1/sgsss-web-scraping-practical-2-2025-03-07-Python.ipynb)
-* APIs Practical 1 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/blob/main/code/day-1/sgsss-api-practical-1-2025-03-07-Python.ipynb)
+* Web-scraping Practical 1 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/blob/main/code/day-1/sgsss-web-scraping-practical-1-2025-03-07-Python.ipynb)
+* Web-scraping Practical 2 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/blob/main/code/day-1/sgsss-web-scraping-practical-2-2025-03-07-Python.ipynb)
+* APIs Practical 1 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/blob/main/code/day-1/sgsss-api-practical-1-2025-03-07-Python.ipynb)
 
 #### R
 
-* Web-scraping Practical 1 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/blob/main/code/day-1/sgsss-web-scraping-practical-1-2025-03-07-R.ipynb)
-* Web-scraping Practical 2 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/blob/main/code/day-1/sgsss-web-scraping-practical-2-2025-03-07-R.ipynb)
-* APIs Practical 1 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/blob/main/code/day-1/sgsss-api-practical-1-2025-03-07-R.ipynb)
+* Web-scraping Practical 1 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/blob/main/code/day-1/sgsss-web-scraping-practical-1-2025-03-07-R.ipynb)
+* Web-scraping Practical 2 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/blob/main/code/day-1/sgsss-web-scraping-practical-2-2025-03-07-R.ipynb)
+* APIs Practical 1 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/blob/main/code/day-1/sgsss-api-practical-1-2025-03-07-R.ipynb)
