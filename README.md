@@ -1,4 +1,4 @@
-![SGSSS Logo](.\img\SGSSS_Stacked.png "SGSSS logo")
+![SGSSS Logo](img\SGSSS_Stacked.png "SGSSS logo")
 
 # Practical Computational Methods for Social Scientists
 
