@@ -1,4 +1,4 @@
-![SGSSS Logo]("https://github.com/SGSSSonline/text-analysis/blob/main/img/SGSSS_Stacked.png" "SGSSS Logo")
+![SGSSS Logo](img/SGSSS_Stacked.png)
 
 # Practical Computational Methods for Social Scientists
 
