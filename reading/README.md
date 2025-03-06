@@ -1,4 +1,4 @@
-# Web scraping for social scientists
+# Practical Computational Methods for Social Scientists
 
 ## Resource List
 
@@ -13,7 +13,6 @@ Hogan, B. (2022). *From Social Science to Data Science*. <a href="https://uk.sag
 Grimmer, J., Roberts, M. E., & Stewart, B. M. (2022). *Text as Data: A New Framework for Machine Learning and the Social Sciences.* <a href="https://press.princeton.edu/books/paperback/9780691207551/text-as-data" target=_blank>https://press.princeton.edu/books/paperback/9780691207551/text-as-data</a>
 
 Stoltz, D. S. & Taylor, M. A. (2024). *Mapping Texts: Computational Text Analysis for the Social Sciences.* <a href="https://global.oup.com/academic/product/mapping-texts-9780197756881" target=_blank>https://global.oup.com/academic/product/mapping-texts-9780197756881</a>
-
 
 ### Digital Data
 
@@ -49,4 +48,8 @@ Note: An in-depth treatment of core data science tasks in Python - calculations,
 
 ### R
 
+Li, Q. (2018). *Using R for Data Analysis in Social Sciences: A Research Project-Oriented Approach.* <a href="https://academic.oup.com/book/27134" target=_blank>https://academic.oup.com/book/27134</a>
 
+Fogarty, B. J. (2023). *Quantitative Social Science Data with R: An Introduction (2nd ed.)*. <a href="https://uk.sagepub.com/en-gb/eur/quantitative-social-science-data-with-r/book278486" target=_blank>https://uk.sagepub.com/en-gb/eur/quantitative-social-science-data-with-r/book278486</a>
+
+Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for data science (2nd ed.)*. <a href="https://r4ds.hadley.nz/" target=_blank>https://r4ds.hadley.nz/</a>
