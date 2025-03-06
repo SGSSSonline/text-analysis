@@ -8,6 +8,13 @@ The following are suggested books, papers, websites and other resources for rein
 
 Hogan, B. (2022). *From Social Science to Data Science*. <a href="https://uk.sagepub.com/en-gb/eur/from-social-science-to-data-science/book270152" target=_blank>https://uk.sagepub.com/en-gb/eur/from-social-science-to-data-science/book270152</a>
 
+### Text Analysis
+
+Grimmer, J., Roberts, M. E., & Stewart, B. M. (2022). *Text as Data: A New Framework for Machine Learning and the Social Sciences.* <a href="https://press.princeton.edu/books/paperback/9780691207551/text-as-data" target=_blank>https://press.princeton.edu/books/paperback/9780691207551/text-as-data</a>
+
+Stoltz, D. S. & Taylor, M. A. (2024). *Mapping Texts: Computational Text Analysis for the Social Sciences.* <a href="https://global.oup.com/academic/product/mapping-texts-9780197756881" target=_blank>https://global.oup.com/academic/product/mapping-texts-9780197756881</a>
+
+
 ### Digital Data
 
 Kitchin, R. (2021). *Data Lives: How Data Are Made And Shape Our World*. <a href="https://bristoluniversitypress.co.uk/data-lives" target=_blank>https://bristoluniversitypress.co.uk/data-lives</a>
@@ -39,3 +46,7 @@ Note: A brilliant set of notebooks and lessons for learning the fundamentals of 
 
 VanderPlas, J. (2016). *Python Data Science Handbook: Essential Tools for Working with Data*. <a href="https://jakevdp.github.io/PythonDataScienceHandbook/" target=_blank>https://jakevdp.github.io/PythonDataScienceHandbook/</a> <br>
 Note: An in-depth treatment of core data science tasks in Python - calculations, data frames, visualisation and machine learning.
+
+### R
+
+
