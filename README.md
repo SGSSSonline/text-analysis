@@ -18,7 +18,7 @@ This repository houses the materials underpinning the three-day course run by [D
 
 The course programme can be viewed here:
 * Day 1: https://github.com/SGSSSonline/text-analysis/blob/main/sgsss-2025-css-day-1-outline-2025-03-07.pdf
-* Days 2-3: 
+* Day 2-3: 
 
 ### Materials
 
