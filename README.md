@@ -6,7 +6,7 @@
 
 Computational methods are transforming research practice across the disciplines. For social scientists these methods offer a number of valuable opportunities, including creating new datasets from digital sources; unearthing new insights and avenues for research from existing data sources; and improving the accuracy and efficiency of fundamental research activities.
 
-In this three-day course you will learn how to apply computational methods for the collection, management and analysis of textual data. Using Python and R, you will develop skills in collecting data from the web; preparing textual data for computational analysis; and core methods of text data analysis (e.g., sentiment analysis, topic modelling).
+In this three-day course you will learn how to apply computational methods for the collection, management and analysis of text data. Using Python and R, you will develop skills in collecting data from the web; preparing textual data for computational analysis; and core methods of text data analysis (e.g., sentiment analysis, topic modelling).
 
 This course is suitable for social science researchers from any methodological background (e.g., qualitative, quantitative) and who are new to the use of computational methods in their research. Participants are not expected to have any experience of using Python or R before attending this course.
 
