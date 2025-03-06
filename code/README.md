@@ -1,19 +1,29 @@
-# Web scraping for social scientists
+# Practical Computational Methods for Social Scientists
 
 ## Interactive coding materials
 
-The lessons contain Python code for you to execute / run.
+The lessons contain Python / R code for you to execute / run.
 
 Typically you would download the data / code files to your local machine (e.g., laptop).
 
-However you can complete the lessons online without the need to install or download anything. Simply click on the relevant link below.
+However you can complete the lessons online without the need to install or download anything. Simply click on the relevant link for each lesson below.
 
-Once you have a [Google account](https://support.google.com/accounts/answer/27441?hl=en) then please click the *Open in Colab* link.
+You need a Google account to be able to run the code notebooks. Once you have a [Google account](https://support.google.com/accounts/answer/27441?hl=en) then please click the *Open in Colab* link.
 
-### Coding lessons
+### Day 1
 
-**Web scraping for social scientists: Example 1** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiarmuidM/sgsss-web-scraping-for-social-scientists-2024/blob/main/code/sgsss-web-scraping-example-1-2024-06-05.ipynb)
+#### Python
 
-**Web scraping for social scientists: Example 2** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiarmuidM/sgsss-web-scraping-for-social-scientists-2024/blob/main/code/sgsss-web-scraping-example-2-2024-06-05.ipynb)
+**Web-scraping Practical 1** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/main/code/day-1/sgsss-web-scraping-practical-1-2025-03-07-Python.ipynb)
 
-**Web scraping for social scientists: Practical exercise** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiarmuidM/sgsss-web-scraping-for-social-scientists-2024/blob/main/code/sgsss-web-scraping-practical-exercise-2024-06-05.ipynb)
+**Web-scraping Practical 2** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/main/code/day-1/sgsss-web-scraping-practical-2-2025-03-07-Python.ipynb)
+
+**APIs Practical 1** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/main/code/day-1/sgsss-api-practical-1-2025-03-07-Python.ipynb)
+
+#### R
+
+**Web-scraping Practical 1** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/main/code/day-1/sgsss-web-scraping-practical-1-2025-03-07-R.ipynb)
+
+**Web-scraping Practical 2** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/main/code/day-1/sgsss-web-scraping-practical-2-2025-03-07-R.ipynb)
+
+**APIs Practical 1** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/tree/main/code/day-1/sgsss-api-practical-1-2025-03-07-R.ipynb)
