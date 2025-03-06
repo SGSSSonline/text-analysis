@@ -17,14 +17,14 @@ This repository houses the materials underpinning the three-day course run by [D
 ### Programme
 
 The course programme can be viewed here:
-* [Day 1: ](https://github.com/SGSSSonline/text-analysis/blob/main/sgsss-2025-css-day-1-outline-2025-03-07.pdf).
+* Day 1: https://github.com/SGSSSonline/text-analysis/blob/main/sgsss-2025-css-day-1-outline-2025-03-07.pdf
 * Days 2-3: 
 
 ### Materials
 
 The training materials can be found in the following folders:
 * [code](./code) - Jupyter Notebooks and syntax files containing executable Python and R code.
-* [installation](./installation) - Guidance on installing Python Jupyter Notebooks.
+* [installation](./installation) - Guidance on installing software on your own machines.
 * [presentations](./presentations) - PDFs and recordings of the course lectures.
 * [reading](./reading) - lists of interesting and relevant reading materials.
 
