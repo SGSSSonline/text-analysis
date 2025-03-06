@@ -1,4 +1,4 @@
-![SGSSS Logo](..\img\SGSSS_Stacked.png "SGSSS logo")
+![SGSSS Logo](.\img\SGSSS_Stacked.png "SGSSS logo")
 
 # Practical Computational Methods for Social Scientists
 
@@ -16,7 +16,9 @@ This repository houses the materials underpinning the three-day course run by [D
 
 ### Programme
 
-The course programme can be viewed [here](https://github.com/DiarmuidM/sgsss-web-scraping-for-social-scientists-2024/blob/main/sgsss-2025-css-outline-2025-03-07.pdf).
+The course programme can be viewed here:
+* [Day 1: ](https://github.com/SGSSSonline/text-analysis/blob/main/sgsss-2025-css-day-1-outline-2025-03-07.pdf).
+* Days 2-3: 
 
 ### Materials
 
