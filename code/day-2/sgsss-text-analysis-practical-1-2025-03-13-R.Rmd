@@ -1,0 +1,475 @@
+---
+title: "Practical Computational Methods for Social Scientists"
+subtitle: "Practical 1"
+format: html
+editor: visual
+---
+
+![SGSSS logo](https://raw.github.com/SGSSSonline/text-analysis/main/img/SGSSS_Stacked.png)
+
+## Introduction
+
+Computational methods are transforming research practice across the disciplines. For social scientists these methods offer a number of valuable opportunities, including creating new datasets from digital sources; unearthing new insights and avenues for research from existing data sources; and improving the accuracy and efficiency of fundamental research activities.
+
+In this lesson we introduce and apply the foundational preprocessing steps of text analysis for social science research.
+
+### Aims
+
+his lesson has two aims:
+
+1.  Demonstrate how to use R to preprocess text data relating to charitable activities.
+
+2.  Cultivate your computational thinking skills through coding examples. In particular, how to define and solve a data preprocessing problem using a computational method.
+
+### Lesson details
+
+-   **Level**: Introductory
+
+-   **Time**: 40-60 minutes
+
+-   **Pre-requisites**: None
+
+-   **Audience**: Researchers and analysts from any disciplinary background
+
+-   **Learning outcomes**:
+
+    1.  Understand the key steps and concepts for getting social science data ready for text analysis.
+
+    2.  Be able to use R for preprocessing text data.
+
+## Guide to using this resource
+
+This learning resource was built using \[R Markdown\](https://rmarkdown.rstudio.com/, an open-source software application that allows you to mix code, results and narrative in a single document. As [Barba et al. (2019)](https://www.google.com/url?q=https%3A%2F%2Fjupyter4edu.github.io%2Fjupyter-edu-book%2F) espouse:
+
+> In a world where every subject matter can have a data-supported treatment, where computational devices are omnipresent and pervasive, the union of natural language and computation creates compelling communication and learning opportunities.
+
+If you are familiar with Quarto/R markdown then skip ahead to the main content (*How do we prepare social science data for text analysis?*). Otherwise, the following is a quick guide to navigating and interacting with the notebook.
+
+### Interaction
+
+**You only need to execute the code that is contained in code chunks that are marked by `{r}`.**
+
+To execute a cell, click or click the cell and press the `Run` button on the top toolbar (you can also use the keyboard shortcut Shift + Enter).
+
+Try it for yourself:
+
+```{r}
+print("Hello World")
+
+4 + 2
+
+a <- c(1,2,3,4)
+
+mean(a)
+
+```
+
+### Learn more
+
+R markdown provide rich, flexible features for conducting and documenting your data analysis workflow. To learn more about additional notebook features, we recommend working through some of the [materials](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J. Allaire, and Garrett Grolemund.
+
+## How do we prepare social science data for text analysis?
+
+There are a number of common, initial steps before you can perform text analysis with social science data. Grimmer et al., (2022) suggest the following workflow (Grimmer et al., 2022):
+
+1.  Choose unit of analysis
+2.  Tokenise
+3.  Reduce complexity:
+
+-   Convert to lowercase
+
+-   Remove punctuation
+
+-   Remove stop words
+
+-   Create equivalence classes (lemmatisation / stemming)
+
+-   Filter by frequency
+
+4.  Construct document-feature matrix (W = N\*J) (Wij = count of type j in document i)
+
+## Preliminaries
+
+First we need to ensure R has the functionality it needs for text analysis. As you will see, it needs quite a bit of extra functionality, so this may take some time to install / import depending on your machine.
+
+```{r}
+## Install and load necessary libraries
+#install.packages("pacman")
+pacman::p_load(quanteda)      # For text processing
+pacman::p_load(textstem)      # For lemmatising text
+pacman::p_load(quanteda.textstats)  # For text statistics
+pacman::p_load(tidyverse)         # For data manipulation and data visualisation
+pacman::p_load(readr)         # For reading CSV files
+pacman::p_load(tm)            # For additional text preprocessing
+pacman::p_load(stringr)       # For string manipulation
+pacman::p_load(hunspell)      # Spellcheck for text analysis
+
+##  If pacman does not work, uncomment the lines of code below and run them instead
+
+# install.packages(
+#   c("quanteda", "quanteda.textstats", "textstem", "tidyverse", "readr", "tm", "stringr")
+#                  )
+# 
+# library(quanteda)      # For text processing
+# library(quanteda.textstats)  # For text statistics
+# library(textstem)      # For lemmatising text
+# library(tidyverse)         # For data manipulation and data visualisation
+# library(readr)         # For reading CSV files
+# library(tm)            # For additional text preprocessing
+# library(stringr)       # For string manipulation
+```
+
+How do we know what modules we need for text analysis? Thankfully it is an established method, therefore others have figured this out for us:
+
+-   \[https://github.com/UKDataServiceOpen/text-mining/blob/407d16015ba270b4e39462c20de9b370c4e78563/code/1-Processing.ipynb\](https://github.com/UKDataServiceOpen/text-mining/blob/407d16015ba270b4e39462c20de9b370c4e78563/code/1-Processing.ipynb)
+-   \[https://github.com/UKDataServiceOpen/text-mining/blob/407d16015ba270b4e39462c20de9b370c4e78563/code/2-Extraction.ipynb\](https://github.com/UKDataServiceOpen/text-mining/blob/407d16015ba270b4e39462c20de9b370c4e78563/code/2-Extraction.ipynb)
+
+Packages contain ready made functions and additional techniques that are not present in the default R environment. As R is an open source software, there are thousands of packages developed to make our data analysis needs easier to solve.
+
+### Import data
+
+A second important preliminary step is to import the text data you will be using.
+
+```{r}
+data <- read.csv("https://raw.githubusercontent.com/SGSSSonline/text-analysis/refs/heads/main/data/acnc-overseas-activities-2022.csv") # loads data from github repository
+
+
+head(data, n = 10) # Preview first 10 rows of the dataset
+head(data$activity_desc, n = 6) # Preview first 6 rows of the activity_desc variable from the dataset
+```
+
+### Choose unit of analysis
+
+A fundamental task in social science research more generally, it is important for text analysis also. In many cases the unit of analysis is the **document**; that is, we are interested in measuring relevant, salient features of a document (e.g., author, style, sentiment, topics) and comparing these across other documents. However we can also select other, often small units of analysis such as paragraphs or sentences - then we can compare *within* and *between* documents e.g., how do political speeches develop rom beginning to end, and across different speeches?
+
+In our analysis the unit of analysis is the document: each row in the raw data represents a single charity's description of its overseas activities. This description is what serves as the document.
+
+## Pilot
+
+Before unleashing this workflow on a corpus, let's apply it to a single document so we can get a sense of what happens at each step. Below we select the text in the activity_desc column for the 501st row in the dataset.
+
+```{r}
+sample_text <- data$activity_desc[501]
+
+sample_text
+```
+
+**TASK**: Read through the above activity description and note any issues with the text e.g., misspellings, odd words, improper punctuation.
+
+### Tokenise
+
+The next major step is to split the text into subunits of analysis. The most common subunit of interest is a type (or word). 
+
+```{r}
+sample_words <- quanteda::tokens(sample_text, 
+                                   what = "word"
+                                   )
+
+sample_words # comma-seperated list of tokens in the text
+length(unlist(sample_words)) # number of tokens in text
+length(unique(unlist((sample_words)))) # number of unique tokens in text
+
+# we use unlist() as sample_words is stored as a list object
+```
+
+We can see that tokenising is an important but not infallible step in preprocessing text data. Tokenisers generally work by splitting text into separate components. How do these approaches know when one component (e.g., word) begins and another ends? They use whitespace as a delimiter / separator. This works very well but not perfectly, as you can see punctuation like commas, periods and brackets are identified as tokens in the text. We are generally not interested in punctuation for analysis, so we need a later step to remove these instances.
+
+We can also tokenise the text into sentences if these were our linguistic subunits of interest.
+
+```{r}
+sample_sentences <- quanteda::tokens(sample_text, 
+                                   what = "sentence"
+                                   )
+
+sample_sentences # comma-separated list of sentences in the text
+length(unlist(sample_sentences)) # number of sentences in text
+length(unique(unlist((sample_sentences)))) # number of unique sentences in text
+```
+
+### Reduce Complexity
+
+#### Convert to lowercase
+
+Unless capitalisation is of analytical interest, we generally convert all tokens to lowercase. In essence we want to avoid situations where we treat the same words as if they different e.g., are "The" and "the" different words? "Charity" and "CHARITY"?
+
+```{r}
+sample_lower <- quanteda::tokens_tolower(sample_words)
+sample_lower
+length(unlist(sample_lower))
+```
+
+#### Spell check
+
+This step is often not necessary and can be computationally intensive. However here is how you can do it.
+
+```{r}
+hunspell_check(unlist(sample_lower))
+  
+sample_correct_spell <- hunspell_parse(unlist(sample_lower))
+
+head(sample_correct_spell)
+```
+
+#### Remove punctuation
+
+```{r}
+sample_words_no_punctuation <- quanteda::tokens(sample_lower, 
+                                   remove_punct = TRUE,
+                                   what = "word"
+                                   )
+sample_words_no_punctuation
+```
+
+At this point there are still some issues:
+
+-   There are spaces operationalised as tokens e.g., where there used to be punctuation
+-   There are tokens consisting of a single character e.g., a number or letter that was separated from its apostrophe.
+
+```{r}
+sample_words_no_punct_no_symbols <- quanteda::tokens(sample_lower, 
+                                   remove_punct = TRUE,
+                                   remove_symbols = TRUE,
+                                   what = "word"
+                                   )
+
+sample_words_no_space <- tokens_remove(sample_words_no_punct_no_symbols, pattern = "\\s+")
+
+sample_words_no_space
+```
+
+#### Remove stopwords
+
+```{r}
+sample_no_stop_words <- tokens_remove(sample_words_no_space, pattern = stopwords("en"))
+
+sample_no_stop_words
+length(unlist(sample_no_stop_words))
+```
+
+#### Create equivalence classes: Stemming
+
+```{r}
+sample_stemmed <- tokens_wordstem(sample_no_stop_words)
+
+sample_stemmed
+length(unlist(sample_stemmed)) # number of tokens
+length(unique(unlist(sample_stemmed))) # number of terms
+```
+
+Notice what has happened words like "comply", "external" and "charity". They are now expressed in their common root form and thus are no longer words that we would find in the English dictionary. These are examples of terms rather than types.
+
+**QUESTION:** What is the value of transforming words to their root form?
+
+#### Create equivalence classes: Lemmatisation
+
+This is an alternative to stemming that maps words to a common word based on semantic meaning e.g., "car" and "cars" map to "car".
+
+```{r}
+lemmatize_words("car")
+lemmatize_words("cars")
+```
+
+```{r}
+sample_lemmetised <- lemmatize_words(unlist(sample_no_stop_words))
+
+sample_lemmetised
+length(unlist(sample_lemmetised)) # number of tokens
+length(unique(unlist(sample_lemmetised))) # number of terms
+```
+
+**QUESTION:** What is the difference between stemming and lemmatisation in the example above, both in terms of the number of terms / tokens and the readability of the words?
+
+#### Filter by frequency
+
+As a final step we may want to remove very common or very rare words from the corpus: this aids both substantive interpretations (e.g., perhaps all charities mention their beneficiaries in their activity descriptions) or certain words only appear once across the entire corpus (e.g., misspellings or acroynms).
+
+We can view the frequency table of the terms in our corpus as follows:
+
+```{r}
+frequency_table <- table(sample_lemmetised) %>% as_tibble()
+
+frequency_table 
+```
+
+As we are only working with one document at the moment we won't remove any words just yet. However there are better approaches for handling common / rare terms in a corpus that we shall see shortly (e.g., weighting). For completeness sake, here is how you could remove words based on their frequencies:
+
+```{r}
+max_count <- frequency_table %>% select(n) %>% max()
+min_count <- frequency_table %>% select(n) %>% min()
+
+sample_filtered <- tibble(word = sample_lemmetised) %>%
+  filter(!(word %in% frequency_table$sample_lemmetised[frequency_table$n %in% c(max_count, min_count)])) %>% 
+  pull(word)
+
+print(c("Orignial tokens:", sample_lemmetised))
+print(c("Filtered tokens:", sample_filtered))
+```
+
+### Create Document-Term Matrix
+
+f you are happy with the preprocessing steps above, both in terms of effect and order, we can convert the text to a numeric format suitable for analysis. This format is known as a Document-Term Matrix (DTM) or Document-Feature Matrix (DFM) - the latter is a more general format than the former. Both simply represent a document or corpus in a tabular format, where every row represents a document and every column represents a term or feature relating to the document. If you are a quantitative researcher then this format will be familiar to you e.g., the rows are units of analysis and the columns are variables representative numeric characteristics of the units of analysis.
+
+In order to the create the DTM we need to convert the list of terms into a single string of terms as follows:
+
+```{r}
+sample_text <- paste(sample_lemmetised, collapse = " ")
+sample_text
+
+```
+
+We take the single string of terms and represent them in the "bag of words" format - there are a couple of ways of doing this.
+
+```{r}
+
+test <- tokens(sample_text)
+
+dfm <- quanteda::dfm(test)
+dtm <- convert(dfm, to = "tm")
+inspect(dtm)
+```
+
+OR:
+
+```{r}
+
+corpus <- Corpus(VectorSource(sample_text))
+dtm <- DocumentTermMatrix(corpus)
+inspect(dtm)
+```
+
+**Question** What are the differences between the two approaches (look at the data frame content and shape results?)
+
+It may be difficult to see in the notebook but most DTMs based on real social science text data are sparse: that it, there are lots of terms with zero counts for many documents in the corpus. This is a function of the nature of language (authors have lots of words to choose from when creating a given document) and any reweighting of terms that is applied.
+
+#### Pilot end
+
+Phew, that is a lot of preprocessing and quite a bit of code to get your head around. The good news is these tasks are common to almost all text analysis projects, so once you get your head around them you will be set for future work.
+
+We could still perform some additional work to improve the substantive relevance of the text:
+
+-   Remove numbers
+-   Remove single-character tokens
+-   Remove subject-specific stop words (e.g., "charity", "charities", "australia", "year", "trust", "fund")
+
+## Creating the full DTM
+
+Let's create the DTM we will use for analysis. Instead of sampling one document we will preprocess all of them and make some simple adjustments to improve the text cleaning (e.g., removing numbers and common stop words). To speed up this process, let's create a function (block of code) that handles all of these steps in one go.
+
+### Define function
+
+```{r}
+
+preprocess_text <- function(text) {
+  text <- tolower(text)  # Convert to lowercase
+  text <- str_replace_all(text, "[[:punct:]]", " ")  # Remove punctuation
+  text <- str_replace_all(text, "\\d+", "")  # Remove numbers
+  tokens <- tokens(text, remove_punct = TRUE, remove_numbers = TRUE)  # Tokenization
+  
+  # Remove stopwords (default + custom)
+  stop_words <- c(stopwords("en"), "registered", "registration", "company", "number",
+                  "australia", "australian", "report", "charity", "charities",
+                  "charitable", "year", "end", "statement", "statements", "trustee", "trustees", "trust")
+  tokens <- tokens_remove(tokens, stop_words)
+
+  # Lemmatization using quanteda
+  tokens <- tokens_wordstem(tokens, language = "en")  # Stemming (similar to Python PorterStemmer)
+
+  return(paste(unlist(tokens), collapse = " "))  # Convert tokens back to text
+}
+```
+
+**QUESTION:** What are the consequences of removing non-English words from the corpus?
+
+### Clean text using funciton
+
+```{r}
+# Making sure text column is valid and free of NA
+
+data <- data %>%
+  mutate(activity_desc = as.character(activity_desc)) %>%
+  filter(!is.na(activity_desc))
+```
+
+```{r}
+data <- data %>%
+  mutate(clean_text = sapply(activity_desc, preprocess_text))
+```
+
+```{r}
+data %>%
+  select(abn, activity_desc, clean_text) %>%
+  sample_n(5)
+```
+
+### Create list of documents
+
+We want to loop over every row in the dataset and extract the charity unique id and the cleaned activity description.
+
+```{r}
+documents <- map2(data$abn, data$clean_text, ~ list(.x, .y))
+print(documents[1:5])
+```
+
+```{r}
+text_data <- map(documents, ~ .x[[2]])
+print(text_data[1:6])
+```
+
+### Create a document-term Matrix
+
+```{r}
+
+corpus_data <- corpus(unlist(text_data), text_field = "clean_text")
+token_corpus_data <- tokens(corpus_data)
+
+dfm <- quanteda::dfm(token_corpus_data)
+dtm <- convert(dfm, to = "tm")
+inspect(dtm)
+dtm_df <- cbind(abn = data$abn, dtm)
+dtm_df <- as.data.frame(as.matrix(dtm_df))
+```
+
+### Save DTM as .csv file
+
+```{r}
+write_csv(dtm_df, "acnc-2022-activities-dtm.csv")
+```
+
+## What have we learned?
+
+Let's recap what key skills and techniques we've learned:
+
+-   **How to install packages.** You will usually need to install packages into R to support your work. R does come with some methods and functions that are ready to use straight away, but for text analysis tasks you'll almost certainly need to import some additional packages.
+
+-   **How to preprocess text using a standard workflow.** There are a number of preprocessing steps common to almost all text analysis projects but you still retain some control over which steps and in which order you apply them.
+
+-   **How to convert text to a number format.** The DTM / DFM is the workhorse of text analysis as it offers an efficient format for performing calculations on salient terms or features of text.
+
+-   **How to do all of the above in an efficient, clear and effective manner.**
+
+## Conclusion
+
+There are a number of important steps in getting text data ready for analysis. However you need to think carefully about how sensitive your findings are to variation in the preprocessing steps or order. We will see why we go to the effort of creating a DTM / DFM in the next practical.
+
+## Exercise
+
+Create a DTM / DFM using the other file in the data folder (acnc-overseas-activities-2021.csv).
+
+```{r}
+# INSERT CODE HERE
+```
+
+```{r}
+# INSERT CODE HERE
+
+```
+
+## Appendix A
+
+### Exercise Solution
+
+####Creating a DTM for 2021 data on overseas charitable activities
+
+```{r}
+# INSERT CODE HERE
+```
