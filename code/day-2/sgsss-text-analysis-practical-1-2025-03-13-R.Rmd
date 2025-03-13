@@ -158,7 +158,7 @@ sample_text
 
 ### Tokenise
 
-The next major step is to split the text into subunits of analysis. The most common subunit of interest is a type (or word). 
+The next major step is to split the text into subunits of analysis. The most common subunit of interest is a type (or word).
 
 ```{r}
 sample_words <- quanteda::tokens(sample_text, 
@@ -363,7 +363,7 @@ preprocess_text <- function(text) {
   text <- tolower(text)  # Convert to lowercase
   text <- str_replace_all(text, "[[:punct:]]", " ")  # Remove punctuation
   text <- str_replace_all(text, "\\d+", "")  # Remove numbers
-  tokens <- tokens(text, remove_punct = TRUE, remove_numbers = TRUE)  # Tokenization
+  tokens <- quanteda::tokens(text, remove_punct = TRUE, remove_numbers = TRUE)  # Tokenization
   
   # Remove stopwords (default + custom)
   stop_words <- c(stopwords("en"), "registered", "registration", "company", "number",
@@ -433,6 +433,8 @@ dtm_df <- as.data.frame(as.matrix(dtm_df))
 
 ```{r}
 write_csv(dtm_df, "acnc-2022-activities-dtm.csv")
+
+read_csv("")
 ```
 
 ## What have we learned?
