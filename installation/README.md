@@ -1,4 +1,4 @@
-# Web scraping for social scientists
+# Practical Computational Methods for Social Scientists
 
 ## Installing Python
 
