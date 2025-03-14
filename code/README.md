@@ -34,3 +34,9 @@ You need a Google account to be able to run the code notebooks. Once you have a 
 #### R
 
 * [Text Analysis Practical 1](https://github.com/SGSSSonline/text-analysis/blob/main/code/day-2/sgsss-text-analysis-practical-1-2025-03-13-R.Rmd)
+
+### Day 3
+
+#### Python
+
+* Text Analysis Practical 1 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/text-analysis/blob/main/code/day-3/ssgsss-text-analysis-practical-3-2025-03-14-Python.ipynb)
